@@ -17,6 +17,9 @@
 
   # https://devenv.sh/services/
   # services.postgres.enable = true;
+  services.mongodb.enable = true;
+  services.mongodb.initDatabaseUsername = "fun";
+  services.mongodb.initDatabasePassword = "fun";
 
   # https://devenv.sh/languages/
   # languages.nix.enable = true;
