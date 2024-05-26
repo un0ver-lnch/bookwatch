@@ -1,5 +1,6 @@
 import { For, createSignal, onMount } from "solid-js";
-import Card from "~/components/card";
+import Adder from "~/components/Adder";
+import Card from "~/components/Card";
 
 type CardProps = {
   url: string;
@@ -33,13 +34,19 @@ export default function Home() {
 
   return (
     <main class="mx-auto my-5 grid grid-cols-1 container w-11/12 gap-4">
-      <For each={cards()}>
+      <For each={cards()} fallback={<div class="text-center text-3xl">Nothing there...</div>}>
         {
           (card) => (
             <Card isLoading={isLoading} URL={card.url} title={card.title} description={card.description} />
           )
         }
       </For>
+      <Adder cards={cards} setCards={setCards} />
     </main>
   );
+}
+
+
+export type {
+  CardProps
 }

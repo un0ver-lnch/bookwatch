@@ -2,6 +2,9 @@
 
 {
   # https://devenv.sh/basics/
+  env.DB_USER = "fun";
+  env.DB_PASSWORD = "fun";
+  env.DB_HOST = "localhost";
 
   # https://devenv.sh/packages/
   packages = [  ];
