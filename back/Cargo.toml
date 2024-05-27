@@ -14,3 +14,5 @@ mongodb = "2.8.2"
 tracing = "0.1.40"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 futures = "0.3.30"
+tower-http = { version = "0.5.2", features = ["trace"] }
+uuid = "1.8.0"
