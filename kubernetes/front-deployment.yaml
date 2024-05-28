@@ -1,33 +1,20 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: bookwatch-back
+  name: bookwatch-front
 spec:
-  serviceName: "back"
+  serviceName: "front"
   replicas: 1
   selector:
     matchLabels:
-      app: back
+      app: front
   template:
     metadata:
       labels:
-        app: back
+        app: front
     spec:
       containers:
-      - name: back
+      - name: front
         image: ghcr.io/aitorru/bookwatch-front:trunk
         ports:
-        - containerPort: 3001
-        env:
-        - name: DB_USER
-          valueFrom:
-            secretKeyRef:
-              name: mongodb-secret
-              key: username
-        - name: DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mongodb-secret
-              key: password
-        - name: DB_HOST
-          value: "mongodb"
+        - containerPort: 3000
