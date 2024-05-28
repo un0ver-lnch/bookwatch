@@ -5,7 +5,7 @@ export default function Card(props: { isLoading: Accessor<boolean>, card: Access
 
     const removeCardServer = async (uuid: string) => {
         "use server"
-        await fetch(`http://localhost:3001/api/card/${uuid}`, {
+        await fetch(`http://${process.env.HOST}:3001/api/card/${uuid}`, {
             method: "DELETE",
         });
     }

@@ -11,7 +11,7 @@ export default function Adder(props: { cards: Accessor<CardProps[]>, setCards: S
 
     const fetchServer = async (url: string, title: string, description: string) => {
         "use server"
-        let response = await fetch("http://localhost:3001/api/card", {
+        let response = await fetch(`http://${process.env.HOST}:3001/api/card`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

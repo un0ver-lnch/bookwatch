@@ -23,7 +23,7 @@ export default function Home() {
 
   const fetchCards = async () => {
     "use server"
-    const response = await fetch("http://localhost:3001/api/cards");
+    const response = await fetch(`http://${process.env.HOST}:3001/api/cards`);
     const data = await response.json();
     return data;
   }
