@@ -26,3 +26,15 @@ gitignore
 # System Files
 .DS_Store
 Thumbs.db
+
+devenv.local.nix
+.devenv*
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
+
+# Added by cargo
+
+/target
