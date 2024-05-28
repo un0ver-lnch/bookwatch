@@ -3,7 +3,12 @@ run-name: Back docker image building
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}-back-${{ github.sha }}
-on: [push]
+on:
+  push:
+    branches:
+      - trunk
+    paths-ignore:
+      - 'kubernetes/**'
 jobs:
   Build-DockerImage:
     runs-on: ubuntu-latest
