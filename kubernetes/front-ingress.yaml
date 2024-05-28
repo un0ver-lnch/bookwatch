@@ -16,7 +16,7 @@ spec:
             name: frontend
             port:
               number: 3000
-  - host: 192.168.1.213
+  - host: sonic.local
     http:
       paths:
       - path: /bookwatch
