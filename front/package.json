@@ -17,5 +17,8 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "resolutions": {
+    "string-width": "4.2.3"
   }
 }
