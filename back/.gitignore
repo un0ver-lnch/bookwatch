@@ -1,5 +1,5 @@
 # Devenv
-.devenv*
+.devenv.nix
 # devenv.local.nix
 
 # direnv
