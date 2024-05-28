@@ -6,6 +6,7 @@ import "./app.css";
 export default function App() {
   return (
     <Router
+      base="/bookwatch"
       root={props => (
         <>
           <Suspense>{props.children}</Suspense>

@@ -4,7 +4,6 @@ metadata:
   name: front-ingress
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.middlewares: default-strip-bookwatch@kubernetescrd
 spec:
   rules:
   - host: sonic.tail0edab.ts.net
