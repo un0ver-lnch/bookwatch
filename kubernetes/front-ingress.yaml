@@ -3,7 +3,9 @@ kind: Ingress
 metadata:
   name: front-ingress
   annotations:
+    kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
 spec:
   rules:
   - host: sonic.tail0edab.ts.net
