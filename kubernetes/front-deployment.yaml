@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: front
-        image: ghcr.io/aitorru/bookwatch-front-2d351de944110f6f273366490892630b40746520:trunk
+        image: ghcr.io/aitorru/bookwatch-front-63b98996c782957b52e13c261c7308d5e3cf13a9:trunk
         ports:
         - containerPort: 3000
         env:
