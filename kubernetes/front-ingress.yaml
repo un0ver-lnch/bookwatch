@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend-ingress
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+spec:
+  rules:
+  - host: sonic.tail0edab.ts.net
+    http:
+      paths:
+      - path: /bookwatch
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend
+            port:
+              number: 3000
+  - host: 192.168.1.213
+    http:
+      paths:
+      - path: /bookwatch
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend
+            port:
+              number: 3000
