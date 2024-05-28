@@ -60,9 +60,9 @@ export default function Adder(props: { cards: Accessor<CardProps[]>, setCards: S
         let title = title_input.value;
         let description = description_input.value;
 
-        if (url === "" || title === "" || description === "") {
-            alert("Por favor, llena todos los campos");
-            return;
+        if (url === "" || title === "") {
+            // alert("Por favor, llena los campos");
+            // return;
         }
 
         postCard(url, title, description);
@@ -73,12 +73,12 @@ export default function Adder(props: { cards: Accessor<CardProps[]>, setCards: S
 
     return (
         <>
-            <div class="absolute right-5 bottom-5 z-30">
+            <div class="absolute right-5 bottom-5 z-30" style={{ position: "fixed" }}>
                 <button onclick={() => setIsAdding(!isAdding())} class="h-10 w-10 rounded-full bg-black shadow text-center my-auto text-white text-xl font-black hover:scale-105 transition-transform">
 
                 </button>
             </div>
-            <div class={`absolute left-0 top-0 w-screen h-screen bg-black bg-opacity-50 ${isAdding() ? "" : "hidden"} z-20`}>
+            <div class={`absolute left-0 top-0 w-screen h-screen bg-black bg-opacity-50 ${isAdding() ? "" : "hidden"} z-20`} style={{ position: "fixed" }}>
 
             </div>
             {isAdding() && (

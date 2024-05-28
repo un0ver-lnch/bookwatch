@@ -1,4 +1,4 @@
-import { Accessor, Setter, createEffect, on } from "solid-js";
+import { Accessor, Setter } from "solid-js";
 import { CardProps } from "~/routes";
 
 export default function Card(props: { isLoading: Accessor<boolean>, card: Accessor<CardProps>, cards: Accessor<CardProps[]>, setCards: Setter<CardProps[]> }) {
@@ -9,15 +9,6 @@ export default function Card(props: { isLoading: Accessor<boolean>, card: Access
             method: "DELETE",
         });
     }
-
-    createEffect(
-        on(
-            () => props.card(),
-            async (card) => {
-                console.log(card)
-            }
-        )
-    )
 
 
     const removeCard = async (uuid: string) => {
