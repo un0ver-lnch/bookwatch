@@ -1,13 +1,10 @@
-# Devenv
+devenv.local.nix
 .devenv*
-# devenv.local.nix
-
 # direnv
 .direnv
 
 # pre-commit
 .pre-commit-config.yaml
-
 
 # Added by cargo
 

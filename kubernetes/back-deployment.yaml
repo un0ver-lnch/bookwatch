@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: bookwatch-back
+spec:
+  serviceName: "back"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: back
+  template:
+    metadata:
+      labels:
+        app: back
+    spec:
+      containers:
+      - name: back
+        image: ghcr.io/aitorru/bookwatch-back:trunk
+        ports:
+        - containerPort: 3000
