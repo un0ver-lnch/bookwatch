@@ -2,7 +2,7 @@ name: GitHub Actions - Back Image Build
 run-name: Back docker image building
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}-back
+  IMAGE_NAME: ${{ github.repository }}-back-${{ github.sha }}
 on: [push]
 jobs:
   Build-DockerImage:

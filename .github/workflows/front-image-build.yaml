@@ -2,7 +2,7 @@ name: GitHub Actions - Front Image Build
 run-name: Front docker image building
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}-front
+  IMAGE_NAME: ${{ github.repository }}-front-${{ github.sha }}
 on: [push]
 jobs:
   Build-DockerImage:
