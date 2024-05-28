@@ -4,6 +4,7 @@ RUN nix-env -iA devenv -f https://github.com/NixOS/nixpkgs/tarball/nixpkgs-unsta
 
 COPY . .
 
+RUN [ -f devenv.local.nix ] && rm devenv.local.nix
 RUN devenv test && devenv shell bun run build
 
 ENTRYPOINT ["devenv", "shell"]
