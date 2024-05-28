@@ -4,7 +4,7 @@ RUN nix-env -iA devenv -f https://github.com/NixOS/nixpkgs/tarball/nixpkgs-unsta
 
 COPY . .
 
-RUN devenv test && cargo b --release
+RUN devenv test && devenv shell cargo b --release
 
 ENTRYPOINT ["devenv", "shell"]
 CMD ["./target/release/back"]
