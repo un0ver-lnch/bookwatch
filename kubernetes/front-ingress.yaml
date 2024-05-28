@@ -9,7 +9,7 @@ spec:
   - host: sonic.tail0edab.ts.net
     http:
       paths:
-      - path: /bookwatch
+      - path: /
         pathType: Prefix
         backend:
           service:
