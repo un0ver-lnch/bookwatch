@@ -5,6 +5,10 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
 spec:
+  tls:
+  - hosts:
+    - sonic.tail0edab.ts.net
+    secretName: tailscale-certs
   rules:
   - host: sonic.tail0edab.ts.net
     http:

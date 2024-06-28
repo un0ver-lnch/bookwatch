@@ -1,7 +1,7 @@
 {
   inputs =
     let
-      version = "1.0.5";
+      version = "1.0.7";
 system = "x86_64-linux";
 devenv_root = "/home/sonic/h/bookwatch";
 devenv_dotfile = ./.devenv;
@@ -9,6 +9,7 @@ devenv_dotfile_string = ".devenv";
 container_name = null;
 devenv_tmpdir = "/run/user/1000";
 devenv_runtime = "/run/user/1000/devenv-84901d5";
+devenv_istesting = false;
 
         in {
         pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
@@ -21,7 +22,7 @@ devenv_runtime = "/run/user/1000/devenv-84901d5";
 
       outputs = { nixpkgs, ... }@inputs:
         let
-          version = "1.0.5";
+          version = "1.0.7";
 system = "x86_64-linux";
 devenv_root = "/home/sonic/h/bookwatch";
 devenv_dotfile = ./.devenv;
@@ -29,6 +30,7 @@ devenv_dotfile_string = ".devenv";
 container_name = null;
 devenv_tmpdir = "/run/user/1000";
 devenv_runtime = "/run/user/1000/devenv-84901d5";
+devenv_istesting = false;
 
             devenv =
             if builtins.pathExists (devenv_dotfile + "/devenv.json")
@@ -86,6 +88,9 @@ devenv_runtime = "/run/user/1000/devenv-84901d5";
               (pkgs.lib.optionalAttrs (inputs.devenv.isTmpDir or false) {
                 devenv.tmpdir = devenv_tmpdir;
                 devenv.runtime = devenv_runtime;
+              })
+              (pkgs.lib.optionalAttrs (inputs.devenv.hasIsTesting or false) {
+                devenv.isTesting = devenv_istesting;
               })
               (pkgs.lib.optionalAttrs (container_name != null) {
                 container.isBuilding = pkgs.lib.mkForce true;
