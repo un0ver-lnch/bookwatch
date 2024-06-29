@@ -25,6 +25,10 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Test enviroment (ls)
+        run: ls -la
+      - name: Tree enviroment
+        run: nix-shell -p tree --command "tree -I 'node_modules|target'"
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       - name: Build and push Docker image
