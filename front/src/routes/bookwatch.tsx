@@ -1,3 +1,4 @@
+"use client"
 import { createSignal, onMount, onCleanup, Index } from "solid-js";
 import Adder from "~/components/Adder";
 import Card from "~/components/Card";
