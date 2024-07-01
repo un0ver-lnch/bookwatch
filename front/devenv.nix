@@ -1,6 +1,7 @@
 { pkgs, lib, config, inputs, ... }:
 
 {
+  name = "bookwatch-front";
   # https://devenv.sh/basics/
 
   # https://devenv.sh/packages/
@@ -35,4 +36,6 @@
   # processes.ping.exec = "ping example.com";
 
   # See full reference at https://devenv.sh/reference/options/
+ containers."prod".startupCommand = "bun run start";
+ containers."prod".entrypoint = ["bun" "run" "start"];
 }

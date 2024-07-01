@@ -25,4 +25,5 @@ jobs:
       - name: Install devenv
         run: nix-env -iA devenv -f https://github.com/NixOS/nixpkgs/tarball/nixpkgs-unstable
       - name: Run CI
-        run: cd front && devenv ci
+        run: cd front && devenv shell bun run build && devenv container copy prod
+      - run: docker image ls
