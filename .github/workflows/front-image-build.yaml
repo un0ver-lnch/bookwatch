@@ -7,7 +7,7 @@ on:
     branches:
       - trunk
     paths-ignore:
-      - '.github/**'
+      - '.github/back-image-build.yaml'
       - 'kubernetes/**'
       - 'back/**'
 jobs:
@@ -34,6 +34,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: "front"
           push: true
           tags: ${{ env.REGISTRY }}/${{ github.repository }}-front:${{ github.run_id }}

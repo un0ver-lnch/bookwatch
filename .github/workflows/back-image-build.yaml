@@ -7,7 +7,7 @@ on:
     branches:
       - trunk
     paths-ignore:
-      - '.github/**'
+      - '.github/front-image-build.yaml'
       - 'kubernetes/**'
       - 'front/**'
 jobs:
@@ -27,13 +27,11 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Test enviroment (ls)
         run: ls -la
-      - name: Tree enviroment
-        run: nix-shell -p tree --command "tree -I 'node_modules|target'"
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: "back"
           push: true
           tags: ${{ env.REGISTRY }}/${{ github.repository }}-back:${{ github.run_id }}
