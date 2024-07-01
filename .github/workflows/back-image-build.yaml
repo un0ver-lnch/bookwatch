@@ -11,7 +11,7 @@ on:
       - 'kubernetes/**'
       - 'front/**'
 jobs:
-  Build-DockerImage:
+  Build-Back-DockerImage:
     runs-on: [self-hosted, Linux, X64, default]
     permissions:
       contents: read
