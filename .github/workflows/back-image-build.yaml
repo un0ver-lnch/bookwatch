@@ -12,7 +12,7 @@ on:
       - 'front/**'
 jobs:
   Build-DockerImage:
-    runs-on: self-hosted
+    runs-on: [self-hosted, Linux, X64, default]
     permissions:
       contents: read
       packages: write
