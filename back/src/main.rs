@@ -188,7 +188,7 @@ async fn main() {
                 let mut cards = app_state_clone.cards.lock().await;
                 *cards = new_cards;
             }
-            tokio::time::sleep(tokio::time::Duration::from_secs(30)).await;
+            tokio::time::sleep(tokio::time::Duration::from_secs(3600)).await;
         }
     });
 
