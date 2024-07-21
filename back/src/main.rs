@@ -11,7 +11,7 @@ use axum::{
 use futures::{lock::Mutex, TryStreamExt};
 use mongodb::{bson::doc, options::ClientOptions, Client, Collection};
 use serde::{Deserialize, Serialize};
-use tokio::spawn;
+use tokio::{spawn, task::spawn_blocking};
 use tower_http::{classify::ServerErrorsFailureClass, trace::TraceLayer};
 use tracing::{info_span, Span};
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
@@ -166,7 +166,7 @@ async fn main() {
     });
 
     let app_state_clone_recurrent = app_state.clone();
-    spawn(async move {
+    spawn_blocking(move || async move {
         loop {
             let mut new_cards: Vec<Card> = vec![];
             {
