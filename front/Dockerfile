@@ -1,5 +1,8 @@
 FROM nixos/nix
 
+ARG NIX_INSTALLER_EXTRA_CONF
+ENV NIX_INSTALLER_EXTRA_CONF=${NIX_INSTALLER_EXTRA_CONF}
+
 RUN nix-env -iA devenv -f https://github.com/NixOS/nixpkgs/tarball/nixpkgs-unstable
 
 COPY . .

@@ -34,4 +34,6 @@ jobs:
           context: "{{defaultContext}}:back"
           platforms: linux/amd64,linux/arm64/v8
           push: true
+          build-args: |
+            NIX_INSTALLER_EXTRA_CONF=filter-syscalls = false
           tags: ${{ env.REGISTRY }}/${{ github.repository }}-back:${{ github.run_id }}
