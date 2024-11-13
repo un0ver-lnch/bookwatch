@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: front
-        image: ghcr.io/un0ver-lnch/bookwatch-front:10029546608
+        image: ghcr.io/un0ver-lnch/bookwatch-front:11816793580
         ports:
         - containerPort: 3000
         env:
