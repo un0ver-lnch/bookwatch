@@ -1,7 +1,7 @@
 {
   inputs =
     let
-      version = "1.0.7";
+      version = "1.3.1";
 system = "x86_64-linux";
 devenv_root = "/home/sonic/h/bookwatch";
 devenv_dotfile = ./.devenv;
@@ -22,7 +22,7 @@ devenv_istesting = false;
 
       outputs = { nixpkgs, ... }@inputs:
         let
-          version = "1.0.7";
+          version = "1.3.1";
 system = "x86_64-linux";
 devenv_root = "/home/sonic/h/bookwatch";
 devenv_dotfile = ./.devenv;
@@ -106,6 +106,7 @@ devenv_istesting = false;
 
           options = pkgs.nixosOptionsDoc {
             options = builtins.removeAttrs project.options [ "_module" ];
+            warningsAreErrors = false;
             # Unpack Nix types, e.g. literalExpression, mDoc.
             transformOptions =
               let isDocType = v: builtins.elem v [ "literalDocBook" "literalExpression" "literalMD" "mdDoc" ];
@@ -118,14 +119,31 @@ devenv_istesting = false;
                   v
               );
           };
+
+          build = options: config:
+            lib.concatMapAttrs
+              (name: option:
+                if builtins.hasAttr "type" option then
+                  if option.type.name == "output" || option.type.name == "outputOf" then {
+                    ${name} = config.${name};
+                  } else { }
+                else
+                  let v = build option config.${name};
+                  in if v != { } then {
+                    ${name} = v;
+                  } else { }
+              )
+              options;
         in
         {
           packages."${system}" = {
             optionsJSON = options.optionsJSON;
+            # deprecated
             inherit (config) info procfileScript procfileEnv procfile;
             ci = config.ciDerivation;
           };
           devenv = config;
+          build = build project.options project.config;
           devShell."${system}" = config.shell;
         };
       }
